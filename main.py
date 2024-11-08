@@ -1,12 +1,15 @@
+import os
 from mcrcon import MCRcon as r
 import schedule
 import time
+from dotenv import load_dotenv
 
-server = "192.168.50.161"
-pwd = "1234Qwer!"
+env = load_dotenv()
+host = os.getenv('RCON_HOST')
+pwd = os.getenv('RCON_PASSWORD')
 
 def save():
-    with r(server, pwd) as mcr:
+    with r(host, pwd) as mcr:
         mcr.command('/say Saving...')
         mcr.command('/save-all')
 
